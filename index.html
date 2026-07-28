@@ -1,9 +1,431 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Test</title>
-  </head>
-  <body>
-    <h1>Test Page</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Video</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#06070d;
+overflow-x:hidden;
+color:white;
+}
+
+body::before{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+background:#0066ff;
+filter:blur(180px);
+opacity:.18;
+top:-250px;
+left:-150px;
+animation:move1 10s infinite alternate;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:650px;
+height:650px;
+background:#9d00ff;
+filter:blur(180px);
+opacity:.15;
+right:-180px;
+bottom:-250px;
+animation:move2 12s infinite alternate;
+}
+
+@keyframes move1{
+to{
+transform:translate(150px,120px);
+}
+}
+
+@keyframes move2{
+to{
+transform:translate(-120px,-150px);
+}
+}
+
+.container{
+width:min(1200px,95%);
+margin:auto;
+padding:40px 0;
+position:relative;
+z-index:2;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.logo span{
+color:#3f8cff;
+}
+
+nav a{
+text-decoration:none;
+color:#bbb;
+margin-left:25px;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
+}
+
+.player-box{
+
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border-radius:28px;
+
+overflow:hidden;
+
+box-shadow:
+0 30px 60px rgba(0,0,0,.5);
+
+position:relative;
+}
+
+.player-box::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+padding:2px;
+
+background:linear-gradient(45deg,#0077ff,#8d3cff,#00c8ff);
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+
+mask-composite:exclude;
+
+pointer-events:none;
+
+}
+
+video{
+width:100%;
+display:block;
+background:black;
+}
+
+.info{
+
+padding:35px;
+
+display:flex;
+
+justify-content:space-between;
+
+flex-wrap:wrap;
+
+gap:30px;
+
+}
+
+.left{
+
+flex:1;
+
+min-width:300px;
+
+}
+
+.right{
+
+width:250px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+background:rgba(0,140,255,.18);
+
+color:#7fc8ff;
+
+margin-bottom:15px;
+
+font-size:14px;
+
+}
+
+h1{
+
+font-size:40px;
+
+margin-bottom:15px;
+
+}
+
+.desc{
+
+color:#aaa;
+
+line-height:1.8;
+
+}
+
+.stats{
+
+display:flex;
+
+gap:30px;
+
+margin-top:25px;
+
+}
+
+.stat{
+
+text-align:center;
+
+}
+
+.stat h2{
+
+color:#3fa0ff;
+
+font-size:28px;
+
+}
+
+button{
+
+border:none;
+
+padding:16px;
+
+border-radius:15px;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.35s;
+
+font-weight:600;
+
+}
+
+.play{
+
+background:#1877ff;
+
+color:white;
+
+}
+
+.play:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 30px rgba(0,110,255,.4);
+
+}
+
+.download{
+
+background:#20242d;
+
+color:white;
+
+}
+
+.download:hover{
+
+background:#2d333f;
+
+}
+
+footer{
+
+margin-top:60px;
+
+text-align:center;
+
+color:#666;
+
+font-size:14px;
+
+padding-bottom:20px;
+
+}
+
+@media(max-width:900px){
+
+.info{
+
+flex-direction:column;
+
+}
+
+.right{
+
+width:100%;
+
+}
+
+h1{
+
+font-size:30px;
+
+}
+
+header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+nav{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+nav a{
+
+margin:0;
+
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+VIDEO<span>+</span>
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Trending</a>
+<a href="#">Library</a>
+<a href="#">About</a>
+</nav>
+
+</header>
+
+<div class="player-box">
+
+<video controls autoplay>
+<source src="https://hashhackers.apranet.eu.org/files/b5dd-1752506633224.mp4" type="video/mp4">
+</video>
+
+<div class="info">
+
+<div class="left">
+
+<div class="badge">
+🎬 Featured Video
+</div>
+
+<h1>Cyber Dark Experience</h1>
+
+<p class="desc">
+Nikmati pengalaman menonton dengan tampilan modern bertema gelap. Desain dibuat bergaya streaming premium menggunakan efek glassmorphism, neon glow, dan layout minimalis yang elegan.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h2>4K</h2>
+<span>Quality</span>
+</div>
+
+<div class="stat">
+<h2>60FPS</h2>
+<span>Smooth</span>
+</div>
+
+<div class="stat">
+<h2>HD</h2>
+<span>Streaming</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<button class="play" onclick="document.querySelector('video').play()">
+▶ Play Video
+</button>
+
+<button class="download" onclick="window.open('https://hashhackers.apranet.eu.org/files/b5dd-1752506633224.mp4')">
+⬇ Download
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Made with HTML • CSS • JavaScript
+</footer>
+
+</div>
+
+</body>
 </html>
